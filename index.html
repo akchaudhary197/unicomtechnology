@@ -732,35 +732,11 @@
 
         <div class="contact-form">
           <h3>Send an Inquiry</h3>
-          <form action="https://formsubmit.co/er.ankittewatia@gmail.com" method="POST">
-
-    <input type="hidden" name="_subject"
-           value="New Inquiry from Unicom Technology Website">
-
-    <input type="hidden" name="_captcha" value="false">
-
-    <input type="text"
-           name="name"
-           placeholder="Your Name"
-           required>
-
-    <input type="email"
-           name="email"
-           placeholder="Your Email"
-           required>
-
-    <input type="text"
-           name="phone"
-           placeholder="Your Phone Number"
-           required>
-
-    <textarea
-           name="message"
-           placeholder="Your Requirement..."
-           required></textarea>
-
-    <button type="submit">Submit Request</button>
-
+          <form onsubmit="sendMail(); return false;">
+  <input type="text" id="name" placeholder="Name" required>
+  <input type="email" id="email" placeholder="Email" required>
+  <textarea id="message" placeholder="Message" required></textarea>
+  <button type="submit">Send Inquiry</button>
 </form>
         </div>
       </div>
@@ -787,7 +763,16 @@
       <p>Complete Networking, Security & IT Solutions Provider</p>
     </div>
   </footer>
+<script>
+function sendMail() {
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
 
+  window.location.href =
+    `mailto:er.ankittewatia@gmail.com?subject=Website Inquiry from ${name}&body=Email: ${email}%0D%0A%0D%0A${message}`;
+}
+</script>
   <script>
     function sendMessage(e){
       e.preventDefault();
